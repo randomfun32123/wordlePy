@@ -24,12 +24,37 @@ def printHelp():
 
 finish = 0
 
+
+allowed = []
+
+answers = []
+
+
+for line in allowedFile:
+
+  stripped_line = line.strip()
+
+  line_list = stripped_line.split()
+
+  allowed.append(line_list)
+
+
+allowedFile.close()
+
+
+for line in answersFile:
+
+  stripped_line = line.strip()
+
+  line_list = stripped_line.split()
+
+  answers.append(line_list)
+
+
+answersFile.close()
+
+
 def wordleGame():
-  allowed = []
-
-  answers = []
-
-  answer = ""
 
   skipTry = 0
 
@@ -38,30 +63,6 @@ def wordleGame():
   finish = 0
 
   turn = 1
-
-
-  for line in allowedFile:
-
-    stripped_line = line.strip()
-
-    line_list = stripped_line.split()
-
-    allowed.append(line_list)
-
-
-  allowedFile.close()
-
-
-  for line in answersFile:
-
-    stripped_line = line.strip()
-
-    line_list = stripped_line.split()
-
-    answers.append(line_list)
-
-
-  answersFile.close()
 
   answer = str(random.choice(answers))
 
@@ -126,7 +127,7 @@ def wordleGame():
 
   #print(answer)
 
-  while turn != 7:
+  while turn != 8:
     clear()
     print(topBoard)
     print(midBoard1)
@@ -464,7 +465,7 @@ def wordleGame():
 
 while True:
   keep = str(input("Start? (Y/n) ")).lower()
-  if keep == "" or keep == "y":
+  if (keep == "") or (keep == "y"):
     wordleGame()
   else:
     exit()
